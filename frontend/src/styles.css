@@ -1,0 +1,318 @@
+@import url("https://fonts.googleapis.com/css2?family=Mochiy+Pop+One&family=Zen+Maru+Gothic:wght@400;500;700&display=swap");
+@import url("https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/styles/atom-one-light.min.css");
+
+:root {
+  --bg: #fff8f4;
+  --panel: rgba(255, 255, 255, 0.78);
+  --panel-strong: #fffefa;
+  --line: rgba(159, 117, 102, 0.22);
+  --text: #4b312a;
+  --muted: #8e6a61;
+  --accent: #ff8f6b;
+  --accent-strong: #ff5d73;
+  --sky: #9dd8ff;
+  --mint: #b3f0cb;
+  --shadow: 0 20px 60px rgba(177, 119, 102, 0.18);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: "Zen Maru Gothic", "Microsoft YaHei", sans-serif;
+  color: var(--text);
+  background:
+    radial-gradient(circle at top left, rgba(255, 189, 198, 0.55), transparent 30%),
+    radial-gradient(circle at top right, rgba(157, 216, 255, 0.45), transparent 26%),
+    linear-gradient(180deg, #fff7f1 0%, #fffdf8 40%, #fff8fb 100%);
+  min-height: 100vh;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.2)),
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160' viewBox='0 0 160 160'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffc7ce' fill-opacity='0.26'%3E%3Cpath d='M80 0c9 16 18 24 28 26-12 4-20 13-28 29-8-16-16-25-28-29 10-2 19-10 28-26Z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+  opacity: 0.55;
+}
+
+#app {
+  min-height: 100vh;
+}
+
+.app-shell {
+  display: grid;
+  grid-template-columns: 280px minmax(0, 1fr) 360px;
+  gap: 20px;
+  padding: 20px;
+}
+
+.panel,
+.hero-card {
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 28px;
+  box-shadow: var(--shadow);
+  backdrop-filter: blur(14px);
+}
+
+.glass-panel {
+  min-height: calc(100vh - 40px);
+}
+
+.sidebar,
+.chat-column,
+.main-stage {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.hero-card {
+  padding: 30px;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-card::after {
+  content: "";
+  position: absolute;
+  width: 220px;
+  height: 220px;
+  right: -50px;
+  top: -80px;
+  background: radial-gradient(circle, rgba(255, 143, 107, 0.38), transparent 65%);
+}
+
+.eyebrow,
+.panel-heading h2,
+.report-card h3,
+.cta-button,
+.secondary-button {
+  font-family: "Mochiy Pop One", sans-serif;
+}
+
+.eyebrow {
+  color: var(--accent-strong);
+  letter-spacing: 0.08em;
+  font-size: 0.9rem;
+}
+
+.hero-card h1 {
+  margin: 8px 0 12px;
+  font-size: clamp(2rem, 3vw, 3.4rem);
+  line-height: 1.15;
+}
+
+.hero-text {
+  color: var(--muted);
+  max-width: 680px;
+  line-height: 1.8;
+}
+
+.hero-form,
+.chat-form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.field-label,
+.panel-note {
+  color: var(--muted);
+  font-size: 0.92rem;
+}
+
+.url-input,
+.chat-input {
+  width: 100%;
+  border: 1px solid rgba(255, 143, 107, 0.28);
+  background: rgba(255, 255, 255, 0.92);
+  border-radius: 18px;
+  padding: 16px 18px;
+  color: var(--text);
+  font: inherit;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.8);
+}
+
+.chat-input {
+  min-height: 110px;
+  resize: vertical;
+}
+
+.cta-button,
+.secondary-button,
+.project-item {
+  border: none;
+  cursor: pointer;
+  transition: transform 180ms ease, box-shadow 180ms ease, background 180ms ease;
+}
+
+.cta-button,
+.secondary-button {
+  align-self: flex-start;
+  border-radius: 999px;
+  padding: 14px 22px;
+  color: white;
+  background: linear-gradient(135deg, var(--accent) 0%, var(--accent-strong) 100%);
+  box-shadow: 0 14px 26px rgba(255, 93, 115, 0.26);
+}
+
+.secondary-button {
+  background: linear-gradient(135deg, #ff9a8b 0%, #ffc96b 100%);
+}
+
+.cta-button:hover,
+.secondary-button:hover,
+.project-item:hover {
+  transform: translateY(-2px);
+}
+
+.panel {
+  padding: 22px;
+}
+
+.panel-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.panel-heading h2 {
+  margin: 0;
+  font-size: 1rem;
+}
+
+.project-item {
+  width: 100%;
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-bottom: 12px;
+  padding: 14px;
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.8);
+  border: 1px solid transparent;
+}
+
+.project-item span,
+.project-item em,
+.empty-hint,
+.progress-step {
+  color: var(--muted);
+}
+
+.project-item.active {
+  border-color: rgba(255, 143, 107, 0.42);
+  background: linear-gradient(135deg, rgba(255, 235, 224, 0.95), rgba(255, 249, 243, 0.95));
+}
+
+.progress-track {
+  width: 100%;
+  height: 16px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.7);
+  overflow: hidden;
+}
+
+.progress-bar {
+  height: 100%;
+  border-radius: inherit;
+  background: linear-gradient(90deg, var(--sky) 0%, var(--accent) 65%, var(--accent-strong) 100%);
+  transition: width 220ms ease;
+}
+
+.report-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 16px;
+}
+
+.report-card {
+  background: var(--panel-strong);
+  border: 1px solid rgba(255, 143, 107, 0.16);
+  border-radius: 22px;
+  padding: 18px;
+}
+
+.report-card h3 {
+  margin-top: 0;
+  font-size: 0.98rem;
+}
+
+.markdown-body {
+  line-height: 1.75;
+}
+
+.markdown-body pre {
+  overflow: auto;
+  border-radius: 16px;
+}
+
+.chat-log {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  min-height: 420px;
+  max-height: calc(100vh - 300px);
+  overflow: auto;
+  padding-right: 4px;
+}
+
+.chat-message {
+  padding: 14px 16px;
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.82);
+  border: 1px solid rgba(255, 143, 107, 0.16);
+}
+
+.chat-message.user {
+  background: linear-gradient(135deg, rgba(255, 222, 226, 0.9), rgba(255, 246, 241, 0.9));
+}
+
+.chat-message strong {
+  display: block;
+  margin-bottom: 6px;
+}
+
+.chat-message p {
+  margin: 0;
+  white-space: pre-wrap;
+  line-height: 1.7;
+}
+
+.references {
+  margin: 10px 0 0;
+  padding-left: 18px;
+  color: var(--muted);
+}
+
+.error-banner {
+  margin: 0;
+  border-radius: 18px;
+  padding: 12px 16px;
+  background: rgba(255, 214, 214, 0.85);
+  color: #9f2f3b;
+}
+
+@media (max-width: 1280px) {
+  .app-shell {
+    grid-template-columns: 1fr;
+  }
+
+  .glass-panel {
+    min-height: auto;
+  }
+
+  .chat-log {
+    max-height: 420px;
+  }
+}

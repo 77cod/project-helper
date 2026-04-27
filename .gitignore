@@ -1,0 +1,16 @@
+.pytest_cache/
+.venv/
+__pycache__/
+*.pyc
+*.pyo
+*.db
+.env
+*.env
+*.log
+*.egg-info/
+backend/.pytest_cache/
+backend/project-helper.db
+backend/workspace/
+frontend/node_modules/
+frontend/dist/
+workspace/
